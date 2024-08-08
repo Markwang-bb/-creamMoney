@@ -25,7 +25,9 @@ export const WelcomeLayout: React.FC = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const outlet = useOutlet()
   map.current[currentPath] = outlet
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [extraStyle, setExtraStyle] = useState<{ position: 'relative' | 'absolute' }>({ position: 'relative' })
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const transitions = useTransition(currentPath, {
     from: { transform: currentPath === '/welcome/1' ? 'translateX(0%)' : 'translateX(100%)' },
     enter: { transform: 'translateX(0%)' },
