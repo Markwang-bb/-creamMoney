@@ -4,7 +4,7 @@ import { useRef,useState } from 'react'
 import { Link, useLocation, useOutlet } from 'react-router-dom'
 import logo from '../assets/images/logo.svg'
 
-const linkMap = {
+const linkMap:Record<string,string> = {
   '/welcome/1': '/welcome/2',
   '/welcome/2': '/welcome/3',
   '/welcome/3': '/welcome/4',
@@ -25,7 +25,7 @@ export const WelcomeLayout: React.FC = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const outlet = useOutlet()
   map.current[currentPath] = outlet
-  const [extraStyle, setExtraStyle] = useState({ position: 'relative' })
+  const [extraStyle, setExtraStyle] = useState<{ position: 'relative' | 'absolute' }>({ position: 'relative' })
   const transitions = useTransition(currentPath, {
     from: { transform: currentPath === '/welcome/1' ? 'translateX(0%)' : 'translateX(100%)' },
     enter: { transform: 'translateX(0%)' },
