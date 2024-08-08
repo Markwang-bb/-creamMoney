@@ -9,6 +9,18 @@ export default defineConfig({
   shortcuts: {
   },
   safelist: [],
+  preflights: [
+    {
+      layer: 'components',
+      getCSS: () => `
+        .n-icon{
+          fill: currentColor;
+          width: 1.2em;
+          height: 1.2em;
+        }
+      `
+    },
+  ],
   presets: [
     presetUno(),
     presetAttributify(),
