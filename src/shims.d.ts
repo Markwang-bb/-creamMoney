@@ -12,4 +12,8 @@ declare module 'react' {
     w?:string
     h?:string
   }
+  interface SVGProps<T> extends SVGAttributes<T>, ClassAttributes<T> {
+    w?: string
+    h?: string
+  }
 }
