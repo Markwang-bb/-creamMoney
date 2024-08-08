@@ -7,6 +7,9 @@ import { viteMockServe } from 'vite-plugin-mock'
 export default defineConfig(({ command }) => {
   const isBuild = command === 'build'
   return {
+    define:{
+      isDev:command === 'serve'
+    },
     plugins: [
       Unocss(),
       react(),
