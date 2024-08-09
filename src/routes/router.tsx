@@ -7,6 +7,7 @@ import { Welcome1 } from '../pages/Welcome1'
 import { Welcome2 } from '../pages/Welcome2'
 import { Welcome3 } from '../pages/Welcome3'
 import { Welcome4 } from '../pages/Welcome4'
+import { SignInPage } from '../pages/SignInPage'
 
 export const router = createBrowserRouter([
   { path: '/', element: <Root />, },
@@ -22,7 +23,7 @@ export const router = createBrowserRouter([
     ]
   },
   {path:'/items',element:<ItemsPage/>},
-  { path: '/sign_in', element: <div>sign in</div> },
+  { path: '/sign_in', element: <SignInPage/> },
   { path: '/chart', element: <div>图表</div> },
   { path: '/export', element: <div>敬请期待</div> },
   { path: '/tags', element: <div>标签</div> },
