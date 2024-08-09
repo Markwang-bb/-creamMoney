@@ -1,6 +1,7 @@
 /* eslint-disable no-var */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 var isDev:boolean
+type JSONValue = string | number | boolean | null | { [k: string]: JSONValue } | JSONValue[]
 
 interface Resource<T> {
   resource: T

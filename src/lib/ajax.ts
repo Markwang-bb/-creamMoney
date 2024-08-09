@@ -8,7 +8,8 @@ export const ajax = {
   get:<T> (path: string) => {
     return axios.get<T>(path)
   },
-  post: () => { },
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  post: (_p0: string, _data: { email: string; code: string }) => { },
   patch: () => { },
   delete: () => { },
 }
