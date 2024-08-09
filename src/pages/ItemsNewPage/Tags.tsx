@@ -5,7 +5,6 @@ type Props = {
 }
 export const Tags: React.FC<Props> = (props) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { kind } = props
   const tags = Array.from({ length: 91 })
   return (
     <div>

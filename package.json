@@ -39,6 +39,7 @@
     "swr": "^1.3.0",
     "typescript": "^5.2.2",
     "unocss": "^0.45.30",
+    "vh-check": "^2.0.5",
     "vite": "^5.2.0",
     "vite-plugin-mock": "^2.9.0",
     "zustand": "^4.1.4"
