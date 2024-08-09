@@ -7,8 +7,8 @@ import  { TimeRangePicker } from '../components/TimeRangePicker'
 import { TopMenu } from '../components/TopMenu'
 import { TopNav } from '../components/TopNav'
 import { useMenuStore } from '../stores/useMenuStore'
-import { ItemsList } from './ItemsPage/ItemsList'
-import { ItemsSummary } from './ItemsPage/ItemsSummary'
+import { ItemsList } from './ItemsNewPage/ItemsList'
+import { ItemsSummary } from './ItemsNewPage/ItemsSummary'
 
 
 
