@@ -1,5 +1,5 @@
 import { Key, useState } from 'react'
-import { emojis } from '../../lib/emojis'
+// import { emojis } from '../../lib/emojis'
 import s from './EmojiInput.module.scss'
 
 type Props = {
