@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 import { AddItemFloatButton } from '../components/AddItemFloatButton'
 import { Gradient } from '../components/Gradient'
 import { Icon } from '../components/Icon'
