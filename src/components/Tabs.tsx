@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react'
-import React from 'react'
 import cs from 'classnames'
 import s from './Tabs.module.scss'
 type Props<T> = {
@@ -10,7 +9,7 @@ type Props<T> = {
   }[]
   value: T
   onChange: (key: T) => void
-  className:string
+  className?:string
   classPrefix?: string
 }
 
