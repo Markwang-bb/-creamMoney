@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import useSWRInfinite from 'swr/infinite'
 import { ajax } from '../../lib/ajax'
 
-interface Props{}
+interface Props { }
 const Div = styled.div`
   padding: 16px;
   text-align: center;
@@ -18,7 +18,7 @@ const getKey = (pageIndex: number, prev: Resources<Item>) => {
 }
 
 export const ItemsList: React.FC<Props> = () => {
-  const { data,error, size, setSize} = useSWRInfinite(
+  const { data, error, size, setSize } = useSWRInfinite(
     getKey, async path => (await ajax.get<Resources<Item>>(path)).data
   )
   const onLoadMore = () => {
@@ -68,4 +68,4 @@ export const ItemsList: React.FC<Props> = () => {
           : <Div><button n-btn onClick={onLoadMore}>加载更多</button></Div>}
     </>
   }
- }
+}
