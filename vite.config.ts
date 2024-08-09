@@ -17,7 +17,7 @@ export default defineConfig(({ command }) => {
       viteMockServe({
         mockEnabled: !isBuild // 根据 `isBuild` 配置 mockServe
       }),
-      svgsprites({ noOptimizeList: ['logo','chart', 'category', 'export', 'noty'] })
+      svgsprites({ noOptimizeList: ['logo','chart', 'category', 'export', 'noty','calendar'] })
     ]
   }
 })
