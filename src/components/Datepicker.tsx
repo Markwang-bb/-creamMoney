@@ -1,4 +1,4 @@
-import { useEffect,useRef,useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { time } from '../lib/time'
 
 
@@ -7,12 +7,13 @@ type Props = {
   start?: Date
   end?: Date
   value?: Date
-  onChange?: (value: Date) => void
+  onCancel?: () => void
+  onConfirm?: (value: Date) => void
 }
 
 
 export const Datepicker: React.FC<Props> = (props) => {
-  const { start, end, value, onChange } = props
+  const { start, end, value, onCancel, onConfirm } = props
   const startTime = start ? time(start) : time().add(-10, 'years')
   const endTime = end ? time(end) : time().add(10, 'year')
   if (endTime.timestamp <= startTime.timestamp) {
@@ -22,33 +23,40 @@ export const Datepicker: React.FC<Props> = (props) => {
   const valueTime = useRef(value ? time(value) : time())
   const yearList = Array.from({ length: endTime.year - startTime.year + 1 })
     .map((_, index) => startTime.year + index)
-    const monthList = Array.from({ length: 12 }).map((_, index) => index + 1)
-    const dayList = Array.from({ length: valueTime.current.lastDayOfMonth.day }).map((_, index) => index + 1)
-    return (
+  const monthList = Array.from({ length: 12 }).map((_, index) => index + 1)
+  const dayList = Array.from({ length: valueTime.current.lastDayOfMonth.day }).map((_, index) => index + 1)
+  return (
+    <div>
+      <div flex justify-between p-8px border-b-1 b="#f3f3f3" children-p-8px>
+        <span onClick={onCancel}>取消</span>
+        <span>时间选择</span>
+        <span onClick={() => onConfirm?.(valueTime.current.date)}>确定</span>
+      </div>
       <div flex>
         <Column className="grow-1" items={yearList} value={valueTime.current.year}
-          onChange={year => { valueTime.current.year = year; update({}); onChange?.(valueTime.current.date) }} />
+          onChange={year => { valueTime.current.year = year; update({}) }} />
         <Column className="grow-1" items={monthList} value={valueTime.current.month}
-          onChange={month => { valueTime.current.month = month; update({}); onChange?.(valueTime.current.date) }} />
+          onChange={month => { valueTime.current.month = month; update({}) }} />
         <Column className="grow-1" items={dayList} value={valueTime.current.day}
-          onChange={day => { valueTime.current.day = day; update({}); onChange?.(valueTime.current.date) }} />
+          onChange={day => { valueTime.current.day = day; update({}) }} />
       </div>
-    )
-  }
-  
-  type ColumnProps = {
-    className?: string
-    itemHeight?: number
-    items: number[]
-    value: number
-    onChange: (value: number) => void
-  }
-  export const Column: React.FC<ColumnProps> = (props) => {
+    </div>
+  )
+}
+
+type ColumnProps = {
+  className?: string
+  itemHeight?: number
+  items: number[]
+  value: number
+  onChange: (value: number) => void
+}
+export const Column: React.FC<ColumnProps> = (props) => {
   const { items, itemHeight = 36, className, value, onChange } = props
   useEffect(() => {
     const index = items.indexOf(value)
     setTranslateY(index * -itemHeight)
-  }, [value])  
+  }, [value])
   const [isTouching, setIsTouching] = useState(false)
   const [lastY, setLastY] = useState(-1)
   const index = items.indexOf(value)
@@ -90,7 +98,7 @@ export const Datepicker: React.FC<Props> = (props) => {
           {items.map(item =>
             <li key={item} style={{ height: itemHeight }}>{item}</li>
           )}
-           </ol>
+        </ol>
       </div>
     </div>
   )
