@@ -13,15 +13,19 @@ const getKey = (pageIndex: number, prev: Resources<Item>) => {
 }
 
 export const ItemsList: React.FC<Props> = () => {
-  const { data, error, size, setSize} = useSWRInfinite(
+  const { data, size, setSize} = useSWRInfinite(
     getKey, async path => (await ajax.get<Resources<Item>>(path)).data
   )
   const onLoadMore = () => {
     setSize(size + 1)
   }
   if (!data) {
-    return <span>'还没搞定'</span>
+    return <span>还没搞定</span>
   } else {
+    const last = data[data.length - 1]
+    const { page, per_page, count } = last.pager
+    const hasMore = (page - 1) * per_page + last.resources.length < count
+
     return <>
       <ol>{
         data.map(({ resources }) => {
@@ -36,7 +40,7 @@ export const ItemsList: React.FC<Props> = () => {
                 旅行
               </div>
               <div row-start-2 col-start-2 row-end-3 col-end-4 text="#999999">
-                2011年1月1日
+                2019年1月1日
               </div>
               <div row-start-1 col-start-3 row-end-2 col-end-4 text="#53A867">
                 ￥{item.amount / 100}
@@ -45,9 +49,9 @@ export const ItemsList: React.FC<Props> = () => {
           )
         })
       }</ol>
-      <div p-16px>
-        <button n-btn onClick={onLoadMore}>加载更多</button>
-      </div>
+      {hasMore
+        ? <div p-16px text-center><button n-btn onClick={onLoadMore}>加载更多</button></div>
+        : <div p-16px text-center>没有更多数据了</div>}
     </>
   }
  }
