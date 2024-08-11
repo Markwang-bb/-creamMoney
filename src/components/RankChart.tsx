@@ -18,7 +18,7 @@ export const RankChart: React.FC<Props> = (props) => {
         <div grid grid-cols="[48px_1fr_1fr]" grid-rows="[repeat(2,1fr)]"
           text-12px items-center gap-y-6px gap-x-8px px-16px my-8px>
           <div row-start-1 col-start-1 row-end-3 col-end-2
-            w-48px h-48px rounded-24px bg="#EFEFEF" flex justify-center items-center
+            w-48px h-48px rounded-24px bg-gray-200 flex justify-center items-center
             text-24px>{item.sign}</div>
            <div row-start-1 col-start-2 row-end-2 col-end-3 self-end>
             {item.name} - {`${(item.value / total * 100).toFixed(0)}%`}
@@ -27,7 +27,7 @@ export const RankChart: React.FC<Props> = (props) => {
             <Money value={item.value} />
           </div>
           <div row-start-2 col-start-2 row-end-3 col-end-4 h-8px self-start
-            rounded-4px overflow-hidden bg="#CCC" relative>
+            rounded-4px overflow-hidden bg-gary-300 relative>
             <div absolute h-full rounded-4px
               style={{ background: colors[index], width: `${item.value / max * 100}%` }} />
           </div>
