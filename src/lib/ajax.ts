@@ -1,5 +1,6 @@
 import type { AxiosRequestConfig } from 'axios'
 import axios from 'axios'
+import { useLoadingStore } from '../stores/useLoadingStore'
 
 
 // 静态配置项直接用 defaults 配置
@@ -24,4 +25,26 @@ export const ajax = {
   post: (_p0: string, _data: { email: string; code: string }) => { },
   patch: () => { },
   delete: () => { },
+}
+
+type Options = {
+  showLoading?: boolean
+}
+export const useAjax = (options?: Options) => {
+  const showLoading = options?.showLoading || false
+  const { setVisible } = useLoadingStore()
+  const ajax = {
+    get: <T>(path: string, config?: AxiosRequestConfig<any>) => {
+      return axios.get<T>(path, config)
+    },
+    post: <T>(path: string, data: JSONValue) => {
+      if (showLoading) { setVisible(true) }
+      return axios.post<T>(path, data).finally(() => {
+        if (showLoading) { setVisible(false) }
+      })
+    },
+    patch: () => { },
+    delete: () => { },
+  }
+  return ajax
 }
