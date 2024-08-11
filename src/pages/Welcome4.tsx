@@ -8,7 +8,7 @@ export const Welcome4: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onSkip = () => {
     setHasReadWelcomes(true)
-    nav('/welcome/xxx')
+    nav('/home')
   return (
     <div text-center>
       <img w-129px h-83px src={p} />

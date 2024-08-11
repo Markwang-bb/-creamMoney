@@ -54,7 +54,7 @@ export const TagForm: React.FC<Props> = (props) => {
         error={error.sign?.[0]} />
       <p text-center p-b-24px>记账时长按标签，即可进行编辑</p>
       <div>
-        <button j-btn>确定</button>
+        <button n-btn>确定</button>
       </div>
     </form>
   )

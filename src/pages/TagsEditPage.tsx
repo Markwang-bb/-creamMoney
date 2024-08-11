@@ -11,7 +11,7 @@ export const TagsEditPage: React.FC = () => {
       </Gradient>
       <TagForm type="edit" />
       <div px-16px p-b-32px>
-        <button j-btn bg="#E10505">删除</button>
+        <button n-btn bg="#E10505">删除</button>
       </div>
     </div>
   )
