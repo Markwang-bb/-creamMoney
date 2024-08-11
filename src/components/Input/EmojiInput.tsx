@@ -1,5 +1,4 @@
 import { Key, useState } from 'react'
-// import { emojis } from '../../lib/emojis'
 import s from './EmojiInput.module.scss'
 
 type Props = {
@@ -25,7 +24,7 @@ export const EmojiInput: React.FC<Props> = (props) => {
             grid grid-cols="[repeat(auto-fit,34px)]" grid-rows="[repeat(auto-fit,34px)]"
             justify-center>
             {emoji.chars.map(char =>
-              <span b-1 b-transparent className={char === value ? s.selected : ''}
+               <span key={char} rounded-4px b-1 b-transparent className={char === value ? s.selected : ''}
                 rounded-4px
                 onClick={() => value !== char && onChange?.(char)}>{char}</span>
             )}
