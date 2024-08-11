@@ -5,13 +5,13 @@ import { useLocalStore } from '../stores/useLocalStore'
 export const Welcome4: React.FC = () => {
   const { setHasReadWelcomes } = useLocalStore()
   const nav = useNavigate()
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onSkip = () => {
     setHasReadWelcomes(true)
     nav('/home')
+  }
   return (
     <div text-center>
-      <img w-129px h-83px src={p} />
+      <img src={p} w-129px h-83px />
       <h2 text-32px mt-48px >
         云备份 <br />
         再也不怕数据丢失
@@ -21,5 +21,4 @@ export const Welcome4: React.FC = () => {
       </div>
     </div>
   )
-}
 }
