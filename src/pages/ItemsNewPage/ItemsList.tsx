@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import useSWRInfinite from 'swr/infinite'
-import { ajax } from '../../lib/ajax'
+import { useAjax} from '../../lib/ajax'
 
 interface Props { }
 const Div = styled.div`
@@ -9,6 +9,7 @@ const Div = styled.div`
 `
 
 const getKey = (pageIndex: number, prev: Resources<Item>) => {
+  const { get } = useAjax()
   if (prev) {
     const sendCount = (prev.pager.page - 1) * prev.pager.per_page + prev.resources.length
     const count = prev.pager.count
@@ -20,7 +21,7 @@ const getKey = (pageIndex: number, prev: Resources<Item>) => {
 export const ItemsList: React.FC<Props> = () => {
   const { data, error, size, setSize } = useSWRInfinite(
     getKey,
-    async path => (await ajax.get<Resources<Item>>(path)).data,
+    async path => (await get<Resources<Item>>(path)).data,
     { revalidateFirstPage: false }
   )
   const onLoadMore = () => {

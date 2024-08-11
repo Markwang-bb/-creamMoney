@@ -17,15 +17,15 @@ axios.interceptors.request.use((config) => {
 })
 
 // 封装 axios
-export const ajax = {
-  get: <T>(path: string, config?: AxiosRequestConfig<any>) => {
-    return axios.get<T>(path, config)
-  },
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  post: (_p0: string, _data: { email: string; code: string }) => { },
-  patch: () => { },
-  delete: () => { },
-}
+// export const ajax = {
+//   get: <T>(path: string, config?: AxiosRequestConfig<any>) => {
+//     return axios.get<T>(path, config)
+//   },
+//   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+//   post: (_p0: string, _data: { email: string; code: string }) => { },
+//   patch: () => { },
+//   delete: () => { },
+// }
 
 type Options = {
   showLoading?: boolean
