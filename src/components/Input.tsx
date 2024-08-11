@@ -64,7 +64,7 @@ export const Input: React.FC<Props> = ({
               value={value}
               onChange={(e) => onChange?.(e.target.value)}
             />
-            <button max-w="[calc(60%-8px)]" shrink-0 j-btn>
+            <button max-w="[calc(60%-8px)]" shrink-0 n-btn>
               发送验证码
             </button>
           </div>
