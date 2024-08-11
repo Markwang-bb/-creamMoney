@@ -2,6 +2,8 @@
 import * as React from 'react'
 declare module 'react' {
   interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+    left?: string
+    truncate?: boolean
     absolute?: boolean
     flex?: boolean
     relative?: boolean
