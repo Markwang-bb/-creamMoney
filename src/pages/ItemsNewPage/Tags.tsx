@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom'
+import useSWR from 'swr'
 import { Icon } from '../../components/Icon'
+import { useTagsStore } from '../../stores/useTagsStore'
+import { useAjax } from '../../lib/ajax'
+
 
 type Props = {
   kind: Item['kind']
@@ -7,7 +11,12 @@ type Props = {
 export const Tags: React.FC<Props> = (props) => {
   const {kind} = props
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const tags = Array.from({ length: 91 })
+  const { list: tags, setList } = useTagsStore()
+  const { get } = useAjax({ showLoading: true, handleError: true })
+  useSWR('/api/v1/tags', async (path) => {
+    const response = await get<Resources<Tag>>(path)
+    setList(response.data.resources)
+  })
   return (
     <div>
       <ol grid grid-cols="[repeat(auto-fit,48px)]" justify-center gap-x-32px
