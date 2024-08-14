@@ -5,6 +5,6 @@ cd dist
 git init
 git add .
 git commit -m deploy
-git remote add origin git@github.com:xxx.git
+git remote add origin git@github.com:Markwang-bb/Cream.git
 git push -f origin main:main
 cd -
