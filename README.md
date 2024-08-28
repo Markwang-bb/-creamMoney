@@ -32,7 +32,7 @@ npm run dev
 
 #### 部署
 
-1. 修改 `bin/deploy_to_github.sh` 中的仓库地址 git@github.com:Markwang-bb/-creamMoney.git  
+1. 修改 `bin/deploy_to_github.sh` 中的仓库地址 `git@github.com:Markwang-bb/-creamMoney.git`
 2. 执行部署脚本: `sh bin/deploy_to_github.sh` 
 
 
